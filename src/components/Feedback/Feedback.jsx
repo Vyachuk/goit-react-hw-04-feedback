@@ -1,14 +1,16 @@
 import { Button, List } from './Feedback.styled';
 import PropTypes from 'prop-types'; // ES6
 
-export const Feedback = ({ addMark }) => {
-  const buttons = ['Good', 'Neutral', 'Bad'];
+export const Feedback = ({ marks, addMark }) => {
   return (
     <List>
-      {buttons.map((btn, index) => (
+      {marks.map((btn, index) => (
         <li key={index}>
-          <Button onClick={() => addMark(btn.toLowerCase())} type="button">
-            {btn}
+          <Button
+            onClick={() => addMark({ type: btn, payload: 1 })}
+            type="button"
+          >
+            {btn.charAt(0).toUpperCase() + btn.slice(1)}
           </Button>
         </li>
       ))}
